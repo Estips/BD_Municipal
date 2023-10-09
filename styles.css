@@ -1,0 +1,41 @@
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.Caja-ingreso-datos{
+    flex-direction: column;
+    text-align: center;
+    border: 3px groove rgb(38, 250, 38);
+    border-radius: 12px;
+    font-family: 'Rokkitt', serif;
+}
+.Ingreso-Datos{
+    height: 500px;
+    overflow: auto;
+    flex-direction: column;
+}
+.Submit-button{
+    border-style: groove none none none;
+    border-color: rgb(38, 250, 38);
+    padding: 10px
+}
+.button{
+    background-color: rgb(38, 250, 38);
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+.button:hover{
+    background-color: rgb(38, 250, 38);
+    color: white;
+}
