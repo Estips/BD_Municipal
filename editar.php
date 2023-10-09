@@ -75,11 +75,10 @@
     </div>
         <?php
             include("conexion.php");
-
+                //switch con las 3 opciones editar, eliminar y agregar?
             if (isset($_GET ['editar'])){
                 $codigo_referencia_editar=$_GET['editar'];
-                $sql2="SELECT * FROM bd_muni WHERE codigo_referencia ='$codigo_referencia_editar'";
-                /*
+                //$sql2="SELECT * FROM bd_muni WHERE codigo_referencia ='$codigo_referencia_editar'";
                 $sql2 = "UPDATE archivos SET
                     codigo_referencia = '$codigo_referencia',
                     numero_existente = '$numero_existente',
@@ -100,7 +99,6 @@
                     estado_conservacion = '$estado_conservacion',
                     restauraciones = '$restauraciones'
                     WHERE codigo_referencia = '$codigo_referencia'";
-                */
                 $buscar_reg=mysqli_query($conexion , $sql2);
                 $registro= mysqli_fetch_assoc($buscar_reg);
             }
@@ -124,24 +122,25 @@
                 $deterioro_new = $_POST['deterioro_new'];
                 $estado_conservacion_new = $_POST['estado_conservacion_new'];
                 $restauraciones_new = $_POST['restauraciones_new'];
-                $sql4="UPDATE usuarios SET codigo_referencia= '$codigo_referencia',
-                numero_existente= '$numero_existente',
-                ubicacion_original='$ubicacion_original',
-                soporte='$soporte',
-                valocidad_grabacion='$velocidad_grabacion',
-                tranca_seguridad='$tranca_seguridad',
-                marca='$marca',
-                numero_serie_soporte='$numero_serie_soporte',
-                fecha_grabacion='$fecha_grabacion',
-                generacion='$generacion',
-                duracion_de_la_generacion='$duracion_de_la_generacion',
-                duracion_soporte='$duracion_soporte',
-                entrada_descriptiva_caja='$entrada_descriptiva_caja',
-                entrada_desriptiva_soporte='$entrada_desriptiva_soporte',
-                entrada_descriptiva_documentacion_secundaria='$entrada_descriptiva_documentacion_secundaria',
-                deterioro='$deterioro',
-                estado_conservacion='$estado_conservacion',
-                restauraciones='$restauraciones', WHERE id='codigo_referencia_editar'";
+                $sql4="UPDATE usuarios SET codigo_referencia = '$codigo_referencia',
+                    numero_existente = '$numero_existente',
+                    ubicacion_original ='$ubicacion_original',
+                    soporte = '$soporte',
+                    valocidad_grabacion = '$velocidad_grabacion',
+                    tranca_seguridad = '$tranca_seguridad',
+                    marca = '$marca',
+                    numero_serie_soporte = '$numero_serie_soporte',
+                    fecha_grabacion = '$fecha_grabacion',
+                    generacion = '$generacion',
+                    duracion_de_la_generacion = '$duracion_de_la_generacion',
+                    duracion_soporte = '$duracion_soporte',
+                    entrada_descriptiva_caja = '$entrada_descriptiva_caja',
+                    entrada_desriptiva_soporte = '$entrada_desriptiva_soporte',
+                    entrada_descriptiva_documentacion_secundaria = '$entrada_descriptiva_documentacion_secundaria',
+                    deterioro = '$deterioro',
+                    estado_conservacion = '$estado_conservacion',
+                    restauraciones = '$restauraciones' WHERE id = 'codigo_referencia_editar'"; // Revisar "id"
+
                 $editar=mysqli_query($conexion, $sql4)? print('reg modificado'): print ('error al modificar');
             }
 
@@ -151,6 +150,8 @@
             // $registro= mysqli_fetch_assoc($consulta);
             // print_r($registro);
             /*finaliza modificar*/
+
+    //Muestreo de tabla
     while($registro = mysqli_fetch_assoc($consulta)){
         echo "<tr>";
         echo "<td>" . $registro['codigo_referencia'] . "</td>";
