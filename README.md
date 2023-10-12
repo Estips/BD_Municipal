@@ -36,7 +36,4 @@ Este proyecto se centra en la gestión de archivos históricos municipales media
 
 Este proyecto fue desarrollado por Martin Calvo y Martina Luaces como una aplicación para la gestión de archivos históricos municipales.
 
-## Licencia
-
-Este proyecto está disponible bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
 
