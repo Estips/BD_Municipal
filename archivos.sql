@@ -33,7 +33,7 @@ CREATE TABLE `archivos` (
   `ubicacion_original` varchar(100) NOT NULL,
   `soporte` varchar(100) NOT NULL,
   `velocidad_grabacion` varchar(50) NOT NULL,
-  `tranca_seguridad` tinyint(1) NOT NULL,
+  `tranca_seguridad` varchar(10) NOT NULL,
   `marca` varchar(100) NOT NULL,
   `numero_serie_soporte` varchar(50) NOT NULL,
   `fecha_grabacion` datetime NOT NULL,
@@ -48,13 +48,15 @@ CREATE TABLE `archivos` (
   `restauraciones` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+ALTER TABLE archivos
+ADD CONSTRAINT uk_codigo_referencia UNIQUE (codigo_referencia);
+
 --
 -- Volcado de datos para la tabla `archivos`
 --
 
 INSERT INTO `archivos` (`codigo_referencia`, `numero_existente`, `ubicacion_original`, `soporte`, `velocidad_grabacion`, `tranca_seguridad`, `marca`, `numero_serie_soporte`, `fecha_grabacion`, `generacion`, `duracion_de_la_generacion`, `duracion_soporte`, `entrada_descriptiva_caja`, `entrada_desriptiva_soporte`, `entrada_descriptiva_documentacion_secundaria`, `deterioro`, `estado_conservacion`, `restauraciones`) VALUES
-('pedro', '1234', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', ''),
-('pedro', '1234', '', '', '', 0, '', '', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', '');
+('Prueba', '1234', 'Prueba', 'Prueba', 'Prueba', 'Si', 'Prueba', 'Prueba', '0000-00-00 00:00:00', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

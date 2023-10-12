@@ -1,4 +1,3 @@
-
 body{
     width: 100%;
     overflow-x: hidden;
@@ -6,26 +5,46 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url("background.jpg");
+    backdrop-filter: blur(5px);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 .Caja-ingreso-datos{
     flex-direction: column;
     text-align: center;
-    border: 3px groove rgb(38, 250, 38);
+    border: 4mm ridge #0fea16c9;
     border-radius: 12px;
     font-family: 'Rokkitt', serif;
+    background-color: #D8D4D4;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .Ingreso-Datos{
     height: 500px;
     overflow: auto;
     flex-direction: column;
+    padding-bottom: 20px;
+}
+.Ingreso-Datos input{
+    background-color: #BBB6B6;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.Ingreso-Datos::-webkit-scrollbar{
+    display: none;
+}
+.campo{
+    padding-top: 10px;
+    text-decoration:underline;
 }
 .Submit-button{
-    border-style: groove none none none;
-    border-color: rgb(38, 250, 38);
     padding: 10px
 }
 .button{
-    background-color: rgb(38, 250, 38);
+    background-color: #181C18;
     border: none;
     color: white;
     padding: 8px 20px;
@@ -38,4 +57,13 @@ body{
 .button:hover{
     background-color: rgb(38, 250, 38);
     color: white;
+}
+.Lista-Archivos{
+    margin-top: 20px;
+    border: ridge rgb(38, 250, 38) 5px;
+    width: 50%;
+    text-align: center;
+    padding-bottom: 5px;
+    background-color: #D8D4D4;
+    font-family: 'Rokkitt', serif;
 }
