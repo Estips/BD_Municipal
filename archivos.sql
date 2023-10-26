@@ -32,13 +32,14 @@ CREATE TABLE `archivos` (
   `numero_existente` varchar(50) NOT NULL,
   `ubicacion_original` varchar(100) NOT NULL,
   `soporte` varchar(100) NOT NULL,
+  `formato` varchar(100) NOT NULL,
   `velocidad_grabacion` varchar(50) NOT NULL,
   `tranca_seguridad` varchar(10) NOT NULL,
   `marca` varchar(100) NOT NULL,
   `numero_serie_soporte` varchar(50) NOT NULL,
   `fecha_grabacion` datetime NOT NULL,
   `generacion` varchar(50) NOT NULL,
-  `duracion_de_la_generacion` varchar(50) NOT NULL,
+  `duracion_de_la_grabacion` varchar(50) NOT NULL, 
   `duracion_soporte` varchar(50) NOT NULL,
   `entrada_descriptiva_caja` varchar(150) NOT NULL,
   `entrada_desriptiva_soporte` varchar(150) NOT NULL,
@@ -55,8 +56,8 @@ ADD CONSTRAINT uk_codigo_referencia UNIQUE (codigo_referencia);
 -- Volcado de datos para la tabla `archivos`
 --
 
-INSERT INTO `archivos` (`codigo_referencia`, `numero_existente`, `ubicacion_original`, `soporte`, `velocidad_grabacion`, `tranca_seguridad`, `marca`, `numero_serie_soporte`, `fecha_grabacion`, `generacion`, `duracion_de_la_generacion`, `duracion_soporte`, `entrada_descriptiva_caja`, `entrada_desriptiva_soporte`, `entrada_descriptiva_documentacion_secundaria`, `deterioro`, `estado_conservacion`, `restauraciones`) VALUES
-('Prueba', '1234', 'Prueba', 'Prueba', 'Prueba', 'Si', 'Prueba', 'Prueba', '0000-00-00 00:00:00', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Prueba');
+INSERT INTO `archivos` (`codigo_referencia`, `numero_existente`, `ubicacion_original`, `soporte`, `formato`, `velocidad_grabacion`, `tranca_seguridad`, `marca`, `numero_serie_soporte`, `fecha_grabacion`, `generacion`, `duracion_de_la_grabacion`, `duracion_soporte`, `entrada_descriptiva_caja`, `entrada_desriptiva_soporte`, `entrada_descriptiva_documentacion_secundaria`, `deterioro`, `estado_conservacion`, `restauraciones`) VALUES
+('codigo_referencia', 'numero_existente', 'ubicacion_original', 'soporte', 'formato', 'velocidad_grabacion', 'Si', 'marca', 'numero_serie_soporte', '0000-00-00 00:00:00', 'generacion', 'duracion_de_la_grabacion', 'duracion_soporte', 'entrada_descriptiva_caja', 'entrada_desriptiva_soporte', 'entrada_descriptiva_documentacion_secundaria', 'deterioro', 'estado_conservacion', 'restauraciones');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

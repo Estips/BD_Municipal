@@ -26,6 +26,9 @@
                 <div class="campo">Soporte</div>
                 <input type="text" name="soporte" required>
 
+                <div class="campo">Formato</div>
+                <input type="text" name="formato" required>
+
                 <div class="campo">Velocidad de grabacion</div>
                 <input type="text" name="velocidad_grabacion" required> 
 
@@ -80,16 +83,17 @@
             if(isset($_POST['agregar'])){
                 if(!empty($_POST['codigo_referencia'])){
                     $codigo_referencia = $_POST['codigo_referencia'];
-                    $numero_existente = isset($_POST['numero_existente']) ? $_POST['numero_existente'] : '';
-                    $ubicacion_original = isset($_POST['ubicacion_original']) ? $_POST['ubicacion_original'] : '';
-                    $soporte = isset($_POST['soporte']) ? $_POST['soporte'] : '';
-                    $velocidad_grabacion = isset($_POST['velocidad_grabacion']) ? $_POST['velocidad_grabacion'] : '';
+                    $numero_existente = isset($_POST['numero_existente']) ? $_POST['numero_existente'] : 'Sin Informacion';
+                    $ubicacion_original = isset($_POST['ubicacion_original']) ? $_POST['ubicacion_original'] : 'Sin Informacion';
+                    $soporte = isset($_POST['soporte']) ? $_POST['soporte'] : 'Sin Informacion';
+                    $formato = isset($_POST['formato']) ? $_POST['formato'] : 'Sin Informacion';
+                    $velocidad_grabacion = isset($_POST['velocidad_grabacion']) ? $_POST['velocidad_grabacion'] : 'Sin Informacion';
                     $tranca_seguridad = isset($_POST['tranca_seguridad']) ? $_POST['tranca_seguridad'] : 'No';
                     $marca = isset($_POST['marca']) ? $_POST['marca'] : 'Sin informacion';
                     $numero_serie_soporte = isset($_POST['numero_serie_soporte']) ? $_POST['numero_serie_soporte'] : 'Sin Informacion';
                     $fecha_grabacion = isset($_POST['numero_serie_soporte']) ? $_POST['fecha_grabacion'] : 'Sin Informacion';
                     $generacion = isset($_POST['generacion']) ? $_POST['generacion'] : 'Sin Informacion';
-                    $duracion_de_la_generacion = isset($_POST['duracion_de_la_generacion']) ? $_POST['duracion_de_la_generacion'] : 'Sin Informacion';
+                    $duracion_de_la_grabacion = isset($_POST['duracion_de_la_grabacion']) ? $_POST['duracion_de_la_grabacion'] : 'Sin Informacion';
                     $duracion_soporte = isset($_POST['duracion_soporte']) ? $_POST['duracion_soporte'] : 'Sin Informacion';
                     $entrada_descriptiva_caja = isset($_POST['entrada_descriptiva_caja']) ? $_POST['entrada_descriptiva_caja'] : 'Sin Informacion';
                     $entrada_desriptiva_soporte = isset($_POST['entrada_desriptiva_soporte']) ? $_POST['entrada_desriptiva_soporte'] : 'Sin Informacion';
@@ -98,14 +102,14 @@
                     $estado_conservacion = isset($_POST['estado_conservacion']) ? $_POST['estado_conservacion'] : 'Sin Informacion';
                     $restauraciones = isset($_POST['restauraciones']) ? $_POST['restauraciones'] : 'Sin Informacion';
 
-                    $sql = "INSERT INTO archivos (codigo_referencia, numero_existente, ubicacion_original, soporte, 
+                    $sql = "INSERT INTO archivos (codigo_referencia, numero_existente, ubicacion_original, soporte, formato,
                         velocidad_grabacion, tranca_seguridad, marca, numero_serie_soporte, fecha_grabacion, 
-                        generacion, duracion_de_la_generacion, duracion_soporte, entrada_descriptiva_caja, 
+                        generacion, duracion_de_la_grabacion, duracion_soporte, entrada_descriptiva_caja, 
                         entrada_desriptiva_soporte, entrada_descriptiva_documentacion_secundaria, deterioro, 
                         estado_conservacion, restauraciones)
-                        VALUES ('$codigo_referencia', '$numero_existente', '$ubicacion_original', '$soporte',
+                        VALUES ('$codigo_referencia', '$numero_existente', '$ubicacion_original', '$soporte', '$formato',
                         '$velocidad_grabacion', '$tranca_seguridad', '$marca', '$numero_serie_soporte', '$fecha_grabacion', '$generacion', 
-                        '$duracion_de_la_generacion', '$duracion_soporte', '$entrada_descriptiva_caja', '$entrada_desriptiva_soporte',
+                        '$duracion_de_la_grabacion', '$duracion_soporte', '$entrada_descriptiva_caja', '$entrada_desriptiva_soporte',
                         '$entrada_descriptiva_documentacion_secundaria', '$deterioro', '$estado_conservacion', '$restauraciones')";
 
                     $insertar = mysqli_query($conexion, $sql);
@@ -124,13 +128,14 @@
                     $numero_existente = isset($_POST['numero_existente']) ? $_POST['numero_existente'] : 'Sin Informacion';
                     $ubicacion_original = isset($_POST['ubicacion_original']) ? $_POST['ubicacion_original'] : 'Sin Informacion';
                     $soporte = isset($_POST['soporte']) ? $_POST['soporte'] : 'Sin Informacion';
+                    $formato = isset($_POST['formato']) ? $_POST['formato'] : 'Sin Informacion';
                     $velocidad_grabacion = isset($_POST['velocidad_grabacion']) ? $_POST['velocidad_grabacion'] : 'Sin Informacion';
                     $tranca_seguridad = isset($_POST['tranca_seguridad']) ? $_POST['tranca_seguridad'] : 'No';
                     $marca = isset($_POST['marca']) ? $_POST['marca'] : 'Sin informacion';
                     $numero_serie_soporte = isset($_POST['numero_serie_soporte']) ? $_POST['numero_serie_soporte'] : 'Sin Informacion';
                     $fecha_grabacion = isset($_POST['numero_serie_soporte']) ? $_POST['fecha_grabacion'] : 'Sin Informacion';
                     $generacion = isset($_POST['generacion']) ? $_POST['generacion'] : 'Sin Informacion';
-                    $duracion_de_la_generacion = isset($_POST['duracion_de_la_generacion']) ? $_POST['duracion_de_la_generacion'] : 'Sin Informacion';
+                    $duracion_de_la_grabacion = isset($_POST['duracion_de_la_grabacion']) ? $_POST['duracion_de_la_grabacion'] : 'Sin Informacion';
                     $duracion_soporte = isset($_POST['duracion_soporte']) ? $_POST['duracion_soporte'] : 'Sin Informacion';
                     $entrada_descriptiva_caja = isset($_POST['entrada_descriptiva_caja']) ? $_POST['entrada_descriptiva_caja'] : 'Sin Informacion';
                     $entrada_desriptiva_soporte = isset($_POST['entrada_desriptiva_soporte']) ? $_POST['entrada_desriptiva_soporte'] : 'Sin Informacion';
@@ -143,13 +148,14 @@
                         numero_existente = '$numero_existente',
                         ubicacion_original = '$ubicacion_original',
                         soporte = '$soporte',
+                        formato = '$formato',
                         velocidad_grabacion = '$velocidad_grabacion',
                         tranca_seguridad = '$tranca_seguridad',
                         marca = '$marca',
                         numero_serie_soporte = '$numero_serie_soporte',
                         fecha_grabacion = '$fecha_grabacion',
                         generacion = '$generacion',
-                        duracion_de_la_generacion = '$duracion_de_la_generacion',
+                        duracion_de_la_grabacion = '$duracion_de_la_grabacion',
                         duracion_soporte = '$duracion_soporte',
                         entrada_descriptiva_caja = '$entrada_descriptiva_caja',
                         entrada_desriptiva_soporte = '$entrada_desriptiva_soporte',
@@ -177,13 +183,14 @@
             echo "| <td>" . $registro['numero_existente'] . "</td> | ";
             echo "<td>" . $registro['ubicacion_original'] . "</td> | ";
             echo "<td>" . $registro['soporte'] . "</td> | ";
+            echo "<td>" . $registro['formato'] . "</td> | ";
             echo "<td>" . $registro['velocidad_grabacion'] . "</td> | ";
             echo "<td>" . $registro['tranca_seguridad'] . "</td> | ";
             echo "<td>" . $registro['marca'] . "</td> | ";
             echo "<td>" . $registro['numero_serie_soporte'] . "</td> | ";
             echo "<td>" . $registro['fecha_grabacion'] . "</td> | ";
             echo "<td>" . $registro['generacion'] . "</td> | ";
-            echo "<td>" . $registro['duracion_de_la_generacion'] . "</td> | ";
+            echo "<td>" . $registro['duracion_de_la_grabacion'] . "</td> | ";
             echo "<td>" . $registro['duracion_soporte'] . "</td> | ";
             echo "<td>" . $registro['entrada_descriptiva_caja'] . "</td> | ";
             echo "<td>" . $registro['entrada_desriptiva_soporte'] . "</td> | ";
