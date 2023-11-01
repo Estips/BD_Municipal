@@ -9,14 +9,51 @@
 <body>
     <header><a href="https://www.mda.gob.ar"><img src="img/Logo_muni.png" width="160" height="80"><b>Municipalidad de avellaneda</b></a></header>
 
+    <?php 
+    include("conexion.php");
+    if(!isset($_POST["codigo_referencia"])){$_POST["codigo_referencia"] = '';}
+    if(!isset($_POST['BuscarSoporte'])){$_POST["BuscarSoporte"] = '';}
+    if(!isset($_POST['BuscarFormato'])){$_POST["BuscarFormato"] = '';}
+    if(!isset($_POST['BuscarMarca'])){$_POST["BuscarMarca"] = '';}
+    if(!isset($_POST['Fecha-grabacion'])){$_POST['$Fecha_grabacion'] = '';}
+    if(!isset($_POST['$BuscarGeneracion'])){$_POST['$BuscarGeneracion'] = '';}
+
+    $consulta = "SELECT * FROM archivos";
+
+    if (isset($_POST['submit'])) {
+        // Filtro
+        $consulta = "SELECT * FROM archivos WHERE 1 = 1";
+
+        if ($_POST["codigo_referencia"] != '') {
+            $consulta .= " AND codigo_referencia = '" . $_POST["codigo_referencia"] . "'";
+        }
+
+        if ($_POST["BuscarSoporte"] != '') {
+            $consulta .= " AND soporte = '" . $_POST["BuscarSoporte"] . "'";
+        }
+
+        if ($_POST["BuscarFormato"] != '') {
+            $consulta .= " AND formato = '" . $_POST["BuscarFormato"] . "'";
+        }
+
+        if ($_POST["BuscarMarca"] != '') {
+            $consulta .= " AND marca = '" . $_POST["BuscarMarca"] . "'";
+        }
+
+        if ($_POST['$Fecha_grabacion'] != '') {
+            $consulta .= " AND fecha_grabacion = '" . $_POST['$Fecha_grabacion'] . "'";
+        }
+
+        if ($_POST['$BuscarGeneracion'] != '') {
+            $consulta .= " AND generacion = '" . $_POST['$BuscarGeneracion'] . "'";
+        }
+    }
+    ?>
     <section>
+    <form method="POST">
     <div class="Busqueda">
         Codigo de referencia:
         <input type="text" class="form-control" id="buscar" name="buscar" value="<?php echo $_POST["codigo_referencia"]?>"><br>
-        Numero existente
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        Ubicacion original
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
         Soporte
         <select name="BuscarSoporte" id="BuscarSoporte">
             <?php if($_POST["BuscarSoporte"] != ''){ ?>
@@ -41,13 +78,6 @@
             <option value="super8">Super8</option>
             <option value="otro">Otro</option>
         </select><br>
-        Velocidad de grabacion
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        ¿Tranca de seguridad?
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
-        </select>
         Marca
         <select name="BuscarMarca" id="BuscarMarca">
             <?php if($_POST["BuscarMarca"] != ''){ ?>
@@ -57,10 +87,8 @@
             <option value="sony">Sony</option>
             <option value="otros">Otros</option>
         </select><br>
-        Numero de serie del soporte 
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
         Fecha de grabacion
-        <input type="datetime-local" value="<?php echo $_POST["Numero-existente"]?>"><br>
+        <input type="datetime-local" value="<?php echo $_POST['$Fecha_grabacion']?>"><br>
         Generacion
         <select name="BuscarGeneracion" id="BuscarGeneracion">
             <?php if($_POST["BuscarGeneracion"] != ''){ ?>
@@ -72,68 +100,20 @@
             <option value="copia">Copia</option>
             <option value="sin-datos">Sin datos</option>
             <option value="otro">Otro</option>
-        </select><br>
-        Duracion de la grabacion
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        Duracion del soporte
-        <!-- (Capacidad máxima del cassette en minutos, Ej 60, 90, 120) -->
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        Entrada descriptiva de la caja
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        Entrada descriptiva del soporte 
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        Entrada descriptiva de documentacion secundaria 
-        <input type="text" value="<?php echo $_POST["Numero-existente"]?>"><br>
-        Deterioro
-        <select name="BuscarDeterioro" id="BuscarDeterioro">
-            <?php if($_POST["BuscarDeterioro"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarDeterioro"]?>"><?php echo $_POST["BuscarDeterioro"]; ?></option>
-            <?php } ?>
-            <option value="">Todos</option>
-            <option value="suciedad">Suciedad</option>
-            <option value="hongos">Hongos</option>
-            <option value="deterioro-de-aglutinante">Deterioro de aglutinante (binder)</option>
-            <option value="roturas-en-la-cinta">Roturas en la cinta</option>
-            <option value="sin-caja">Sin caja</option>
-            <option value="dano-en-el-envase"> Daños en el envase</option>
-            <option value="danos-en-el-cassette">Daños en el cassette</option>
-            <option value="sin-deterioro">Sin deterioro</option>
-            <option value="otro">Otro</option>
-        </select><br>
-        Estado de conservacion
-        <select name="BuscarConservacion" id="BuscarConservacion">
-            <?php if($_POST["BuscarConservacion"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarConservacion"]?>"><?php echo $_POST["BuscarConservacion"]; ?></option>
-            <?php } ?>
-            <option value="">Todos</option>
-            <option value="bueno">Bueno</option>
-            <option value="regular">Regular</option>
-            <option value="malo">Malo</option>
-        </select><br>
-        Restauraciones
-        <select name="BuscarRestauraciones" id="BuscarRestauraciones">
-            <?php if($_POST["BuscarRestauraciones"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarRestauraciones"]?>"><?php echo $_POST["BuscarRestauraciones"]; ?></option>
-            <?php } ?>
-            <option value="">Todos</option>
-            <option value="limpieza-fisica">Limpieza fisica</option>
-            <option value="remocion-de-hongos">Remoción de hongos</option>
-            <option value="reparacion-de-cinta">Reparacion de cinta</option>
-            <option value="cambio-de-contenedor">Cambio de contenedor</option>
-            <option value="limpieza-de-contenedor">Limpieza de contenedor</option>
-            <option value="agregado-de-cola">Agregado de cola</option>
-            <option value="otro">Otro</option>
-        </select>
-    </div>
+        </select><br>    
+        <input type="submit" name="submit" value="Buscar">
+        </div>
+    </form>
 
     <div class="Muestreo">
         <?php
-        include("conexion.php");
-        $sql3="SELECT * FROM archivos";
-        $consulta= mysqli_query($conexion,$sql3);
-        //Muestreo de tabla
-        while($registro = mysqli_fetch_assoc($consulta)){
-            echo "<b>| <td>Codigo de referencia: " . $registro['codigo_referencia'] . "</td> | <br></b>";
+        $result = mysqli_query($conexion, $consulta);
+
+        if (!$result) {
+            echo "Error: " . mysqli_error($conexion);
+        } else {
+                while ($registro = mysqli_fetch_assoc($result)) {
+                echo "<b>| <td>Codigo de referencia: " . $registro['codigo_referencia'] . "</td> | <br></b>";
                 echo "<tr>";
                     echo "<td>| Numero existente: " . $registro['numero_existente'] . "</td> | <br>";
                     echo "<td>| Ubicacion del archivo: " . $registro['ubicacion_original'] . "</td> | <br>";
@@ -156,6 +136,7 @@
                     echo "</tr><br>";
                 echo "</tr><br><br>";
             }
+        }
         ?>
     </div>
     </section>
@@ -165,17 +146,18 @@
 </html>
 
 <!--
+26/10
 
 .Terminar diseño
 
 .Buscar alternativa la muestreo de datos (diseño)
 
 .Obtencion de datos:
- - Si no se pide un numero en especifico mostrar todos los archivos de la bd
- - Agregar buscador para filtrar la busqueda de los archivos.
+    - Si no se pide un numero en especifico mostrar todos los archivos de la bd
+    - Agregar buscador para filtrar la busqueda de los archivos.
 
+27/10
 
-(Asegurar que los "values" de cada option esten en camelcase lowercase cuando sean ingresados a la bd, forzarlos a ser camelcase lowercase a la hora
-de ingresar los valores)
+.Cambiar buscar fecha de grabacion por un desde-hasta?
 
 -->
