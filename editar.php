@@ -73,7 +73,7 @@
                 <input type="text" name="restauraciones" required>
             </div>
             <div class="Submit-button">
-                <input type="Submit" name="editar" value="Editar" class="button">
+                
                 <input type="Submit" name="agregar" value="Agregar" class="button">
             </div>
         </form>
@@ -85,8 +85,8 @@
                     $codigo_referencia = $_POST['codigo_referencia'];
                     $numero_existente = isset($_POST['numero_existente']) ? $_POST['numero_existente'] : 'Sin Informacion';
                     $ubicacion_original = isset($_POST['ubicacion_original']) ? $_POST['ubicacion_original'] : 'Sin Informacion';
-                    $soporte = isset($_POST['soporte']) ? $_POST['soporte'] : 'Sin Informacion';
-                    $formato = isset($_POST['formato']) ? $_POST['formato'] : 'Sin Informacion';
+                    $soporte = isset($_POST['soporte']) ? $_POST['soporte'] : 'Soporte';
+                    $formato = isset($_POST['formato']) ? $_POST['formato'] : 'formato';
                     $velocidad_grabacion = isset($_POST['velocidad_grabacion']) ? $_POST['velocidad_grabacion'] : 'Sin Informacion';
                     $tranca_seguridad = isset($_POST['tranca_seguridad']) ? $_POST['tranca_seguridad'] : 'No';
                     $marca = isset($_POST['marca']) ? $_POST['marca'] : 'Sin informacion';
@@ -113,59 +113,7 @@
                         '$entrada_descriptiva_documentacion_secundaria', '$deterioro', '$estado_conservacion', '$restauraciones')";
 
                     $insertar = mysqli_query($conexion, $sql);
-                    if ($insertar) {
-                        echo 'Registro ingresado con éxito';
-                    } else {
-                        echo 'Error al guardar el registro: ' . mysqli_error($conexion);
-                    }
-                    
-                }else{ echo '<script language="javascript">alert("Error, el campo codigo_referencia es obligatorio.");</script>'; }
-            }
-
-            if (isset($_POST ['editar'])){
-                if(!empty($_POST['codigo_referencia'])){
-                    $codigo_referencia = $_POST['codigo_referencia'];
-                    $numero_existente = isset($_POST['numero_existente']) ? $_POST['numero_existente'] : 'Sin Informacion';
-                    $ubicacion_original = isset($_POST['ubicacion_original']) ? $_POST['ubicacion_original'] : 'Sin Informacion';
-                    $soporte = isset($_POST['soporte']) ? $_POST['soporte'] : 'Sin Informacion';
-                    $formato = isset($_POST['formato']) ? $_POST['formato'] : 'Sin Informacion';
-                    $velocidad_grabacion = isset($_POST['velocidad_grabacion']) ? $_POST['velocidad_grabacion'] : 'Sin Informacion';
-                    $tranca_seguridad = isset($_POST['tranca_seguridad']) ? $_POST['tranca_seguridad'] : 'No';
-                    $marca = isset($_POST['marca']) ? $_POST['marca'] : 'Sin informacion';
-                    $numero_serie_soporte = isset($_POST['numero_serie_soporte']) ? $_POST['numero_serie_soporte'] : 'Sin Informacion';
-                    $fecha_grabacion = isset($_POST['numero_serie_soporte']) ? $_POST['fecha_grabacion'] : 'Sin Informacion';
-                    $generacion = isset($_POST['generacion']) ? $_POST['generacion'] : 'Sin Informacion';
-                    $duracion_de_la_grabacion = isset($_POST['duracion_de_la_grabacion']) ? $_POST['duracion_de_la_grabacion'] : 'Sin Informacion';
-                    $duracion_soporte = isset($_POST['duracion_soporte']) ? $_POST['duracion_soporte'] : 'Sin Informacion';
-                    $entrada_descriptiva_caja = isset($_POST['entrada_descriptiva_caja']) ? $_POST['entrada_descriptiva_caja'] : 'Sin Informacion';
-                    $entrada_desriptiva_soporte = isset($_POST['entrada_desriptiva_soporte']) ? $_POST['entrada_desriptiva_soporte'] : 'Sin Informacion';
-                    $entrada_descriptiva_documentacion_secundaria = isset($_POST['entrada_descriptiva_documentacion_secundaria']) ? $_POST['entrada_descriptiva_documentacion_secundaria'] : 'Sin Informacion';
-                    $deterioro = isset($_POST['deterioro']) ? $_POST['deterioro'] : 'Sin Informacion';
-                    $estado_conservacion = isset($_POST['estado_conservacion']) ? $_POST['estado_conservacion'] : 'Sin Informacion';
-                    $restauraciones = isset($_POST['restauraciones']) ? $_POST['restauraciones'] : 'Sin Informacion';
-
-                    $sql2 = "UPDATE archivos SET
-                        numero_existente = '$numero_existente',
-                        ubicacion_original = '$ubicacion_original',
-                        soporte = '$soporte',
-                        formato = '$formato',
-                        velocidad_grabacion = '$velocidad_grabacion',
-                        tranca_seguridad = '$tranca_seguridad',
-                        marca = '$marca',
-                        numero_serie_soporte = '$numero_serie_soporte',
-                        fecha_grabacion = '$fecha_grabacion',
-                        generacion = '$generacion',
-                        duracion_de_la_grabacion = '$duracion_de_la_grabacion',
-                        duracion_soporte = '$duracion_soporte',
-                        entrada_descriptiva_caja = '$entrada_descriptiva_caja',
-                        entrada_desriptiva_soporte = '$entrada_desriptiva_soporte',
-                        entrada_descriptiva_documentacion_secundaria = '$entrada_descriptiva_documentacion_secundaria',
-                        deterioro = '$deterioro',
-                        estado_conservacion = '$estado_conservacion',
-                        restauraciones = '$restauraciones'
-                        WHERE codigo_referencia = '$codigo_referencia'";
-
-                $buscar_reg=mysqli_query($conexion, $sql2);
+                    header("Refresh:0");
                 }else{ echo '<script language="javascript">alert("Error, el campo codigo_referencia es obligatorio.");</script>'; }
             }
             ?>
@@ -199,18 +147,25 @@
             echo "<td>" . $registro['estado_conservacion'] . "</td> | ";
             echo "<td>" . $registro['restauraciones'] . "</td> | ";
         echo "</tr><br>";
-        echo "<td>
+        echo "<td>" .
+        '<div class="form-separacion">'."
             <form action='' method='post'>
                 <input type='hidden' name='codigo_referencia' value='" . $registro['codigo_referencia'] . "'>
                 <input type='submit' name='eliminar' value='Eliminar' class='button'>
             </form>
-          </td>";
+            <form action='editar_2.php' method='get'>
+                <input type='hidden' name='codigo_referencia' value='" . $registro['codigo_referencia'] . "'>
+                <input type='Submit' name='editar' value='Editar' class='button'>
+            </form>
+        </div>
+        </td>";
     echo "</tr>";
     }
     if(isset($_POST['eliminar'])){
         $codigo_referencia = $_POST['codigo_referencia'];
         $sql4 = "DELETE FROM archivos WHERE codigo_referencia = '$codigo_referencia'";
         $eliminar = mysqli_query($conexion, $sql4) ? print('Registro eliminado') : print('Error al eliminar el registro');
+        header("Refresh:0");
     }
     ?>
         </div>

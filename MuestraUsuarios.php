@@ -11,21 +11,23 @@
 
     <?php 
     include("conexion.php");
-    if(!isset($_POST["codigo_referencia"])){$_POST["codigo_referencia"] = '';}
+    if(!isset($_POST['codigo_referencia'])){$_POST["codigo_referencia"] = '';}
     if(!isset($_POST['BuscarSoporte'])){$_POST["BuscarSoporte"] = '';}
     if(!isset($_POST['BuscarFormato'])){$_POST["BuscarFormato"] = '';}
     if(!isset($_POST['BuscarMarca'])){$_POST["BuscarMarca"] = '';}
-    if(!isset($_POST['Fecha-grabacion'])){$_POST['$Fecha_grabacion'] = '';}
-    if(!isset($_POST['$BuscarGeneracion'])){$_POST['$BuscarGeneracion'] = '';}
+    if(!isset($_POST['Fecha-grabacion'])){$_POST['Fecha_grabacion'] = '';}
+    if(!isset($_POST['BuscarGeneracion'])){$_POST["BuscarGeneracion"] = '';}
 
     $consulta = "SELECT * FROM archivos";
 
     if (isset($_POST['submit'])) {
         // Filtro
         $consulta = "SELECT * FROM archivos WHERE 1 = 1";
+        $codigo_referencia = $_POST["CodigoReferencia"];
+        $Fecha_grabacion = $_POST["FechaGrabacion"];
 
-        if ($_POST["codigo_referencia"] != '') {
-            $consulta .= " AND codigo_referencia = '" . $_POST["codigo_referencia"] . "'";
+        if ($codigo_referencia != '') {
+            $consulta .= " AND codigo_referencia = '" . $codigo_referencia . "'";
         }
 
         if ($_POST["BuscarSoporte"] != '') {
@@ -40,12 +42,12 @@
             $consulta .= " AND marca = '" . $_POST["BuscarMarca"] . "'";
         }
 
-        if ($_POST['$Fecha_grabacion'] != '') {
-            $consulta .= " AND fecha_grabacion = '" . $_POST['$Fecha_grabacion'] . "'";
+        if ($Fecha_grabacion  != '') {
+            $consulta .= " AND fecha_grabacion = '" . $Fecha_grabacion  . "'";
         }
 
-        if ($_POST['$BuscarGeneracion'] != '') {
-            $consulta .= " AND generacion = '" . $_POST['$BuscarGeneracion'] . "'";
+        if ($_POST['BuscarGeneracion'] != '') {
+            $consulta .= " AND generacion = '" . $_POST['BuscarGeneracion'] . "'";
         }
     }
     ?>
@@ -53,12 +55,9 @@
     <form method="POST">
     <div class="Busqueda">
         Codigo de referencia:
-        <input type="text" class="form-control" id="buscar" name="buscar" value="<?php echo $_POST["codigo_referencia"]?>"><br>
+        <input type="text" id="CodigoReferencia" name="CodigoReferencia" value="<?php $codigo_referencia ?>"><br>
         Soporte
         <select name="BuscarSoporte" id="BuscarSoporte">
-            <?php if($_POST["BuscarSoporte"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarSoporte"]?>"><?php echo $_POST["BuscarSoporte"]; ?></option>
-            <?php } ?>
             <option value="">Todos</option>
             <option value="magnetico">Magnetico</option>
             <option value="magnetico/digital">Magnetico/Digital</option>
@@ -67,9 +66,6 @@
         </select><br>
         Formato
         <select name="BuscarFormato" id="BuscarFormato">
-            <?php if($_POST["BuscarFormato"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarFormato"]?>"><?php echo $_POST["BuscarFormato"]; ?></option>
-            <?php } ?>
             <option value="">Todos</option>
             <option value="cassette">Cassette</option>
             <option value="dat">DAT</option>
@@ -80,20 +76,14 @@
         </select><br>
         Marca
         <select name="BuscarMarca" id="BuscarMarca">
-            <?php if($_POST["BuscarMarca"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarMarca"]?>"><?php echo $_POST["BuscarMarca"]; ?></option>
-            <?php } ?>
             <option value="">Todos</option>
             <option value="sony">Sony</option>
             <option value="otros">Otros</option>
         </select><br>
         Fecha de grabacion
-        <input type="datetime-local" value="<?php echo $_POST['$Fecha_grabacion']?>"><br>
+        <input type="datetime-local" name="FechaGrabacion" id="FechaGrabacion" value="<?php $Fecha_grabacion ?>"><br>
         Generacion
         <select name="BuscarGeneracion" id="BuscarGeneracion">
-            <?php if($_POST["BuscarGeneracion"] != ''){ ?>
-            <option value="<?php echo $_POST["BuscarGeneracion"]?>"><?php echo $_POST["BuscarGeneracion"]; ?></option>
-            <?php } ?>
             <option value="">Todos</option>
             <option value="master">Master</option>
             <option value="submaster">Submaster</option>
@@ -137,6 +127,7 @@
                 echo "</tr><br><br>";
             }
         }
+        echo $consulta;
         ?>
     </div>
     </section>
