@@ -1,5 +1,4 @@
-
-body {
+body{
     width: 100%;
     overflow-x: hidden;
     display: flex;
@@ -12,59 +11,54 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-
-.Caja-ingreso-datos {
+.Caja-ingreso-datos{
     flex-direction: column;
     text-align: center;
-    border: 3mm ridge  rgb(0, 204, 51);
+    border: 3mm ridge #0fea16c9;
     border-radius: 12px;
     font-family: 'Rokkitt', serif;
     background-color: #D8D4D4;
     padding-left: 10px;
     padding-right: 10px;
 }
-
-.Ingreso-Datos {
+.Ingreso-Datos{
     height: 500px;
-    overflow-y: scroll;
+    overflow: auto;
     flex-direction: column;
     padding-bottom: 20px;
 }
-
-.campo {
-    padding-top: 10px;
-    text-decoration: underline;
-    font-size: 18px; 
-    font-weight: bold; 
-   /* background-color: gray; */
-    color: black; 
-    border-radius: 8px;
-    padding: 5px 10px; 
-}
-
-.Ingreso-Datos input {
+.Ingreso-Datos input{
     background-color: #BBB6B6;
     border-radius: 15px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px; 
+    
 }
-
 .Ingreso-Datos::-webkit-scrollbar {
     width: 10px;
 }
 
 .Ingreso-Datos::-webkit-scrollbar-thumb {
-    background-color: rgb(74, 99, 84);
+    background-color: #525f53; 
     border-radius: 5px;
 }
+.campo{
+    
+        padding-top: 10px;
+        text-decoration: underline;
+        font-size: 18px; 
+        font-weight: bold; 
+       /* background-color: gray; */
+        color: black; 
+        border-radius: 8px;
+        padding: 5px 10px; 
 
-.Submit-button {
-    padding: 10px;
 }
-
-.button {
+.Submit-button{
+    padding: 10px
+}
+.button{
     background-color: #181C18;
     border: none;
     color: white;
@@ -74,23 +68,36 @@ body {
     display: inline-block;
     border-radius: 12px;
     transition-duration: 0.4s;
-    font-size: 17px;
-    font-weight: bold;
 }
-
-.button:hover {
+.button:hover{
     background-color: rgb(38, 250, 38);
     color: white;
 }
-
-.Lista-Archivos {
+.Lista-Archivos{
     margin-top: 20px;
-    border: ridge rgb( 0, 204, 51);
+    border: ridge rgb(38, 250, 38) 5px;
     width: 50%;
     text-align: center;
     padding-bottom: 5px;
     background-color: #D8D4D4;
     font-family: 'Rokkitt', serif;
-    font-size: 17px;
-    /*font-weight: bold;*/
 }
+
+
+.label-Style{
+background-color: #BBB6B6;
+border-radius: green;
+}
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: blue; /* Blue color */
+    text-decoration: none;
+    font-size: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
