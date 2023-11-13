@@ -1,0 +1,77 @@
+*{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-family: 'Barlow Semi Condensed';
+    color: white;
+}
+
+header{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    color: rgb(255, 255, 255);
+    background-color: #0F1400;
+    border-bottom: 10px solid green;
+    width: 100vw;
+    height: 15vh;
+    text-decoration: none;
+}
+
+section{
+    height: 100vh;
+    width: 100%;
+    background-image: url(image_6.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid black;
+}
+
+aside{
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    background-color: #000000b0;
+    backdrop-filter: blur(5px);
+}
+
+.Formulario{
+    color: #000000d2;
+    background: rgba(0, 0, 0, 0.31);
+    border-radius: 20px;
+    border: 1px solid white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 90%;
+    text-align: center;
+    filter: grayscale(0%);
+}
+
+.Formulario::-webkit-scrollbar{
+    display: none;
+}
+
+.datos{
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.datos, input{
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+input{
+    background-color: #f9f9f98d;
+}
+
+footer{
+    display: flex;
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+    border-top: 10px solid #124523;
+    background-color: #0F1400;
+}

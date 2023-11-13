@@ -1,0 +1,120 @@
+*{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-family: 'Barlow Semi Condensed';
+    text-align: center;
+}
+
+header{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    color: rgb(255, 255, 255);
+    background-color: #0F1400;
+    border-bottom: 10px solid green;
+    width: 100vw;
+    height: 15vh;
+    text-decoration: none;
+}
+
+.Datos{
+    color: rgba(255, 255, 255, 0.907);
+    display: flex;
+    width: 100vw;
+    height: 85vh;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-image: url("Fondo_Municipalidad_Vieja.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.filtro{
+    flex-direction: column;
+    background-color: #0F1400;
+    width: 25vw;
+    height: 75vh;
+    border-radius: 50px 50px 0px 50px;
+    overflow: auto;
+    border: 2.5px solid white;
+}
+.filtro::-webkit-scrollbar{
+    display: none;
+}
+
+.ingreso, .form{
+    background-color: white;
+    text-align: center;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+.ingreso, .buscar{
+    background-color: #0F549F; 
+    color: white; 
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.background-shadow {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.292);
+    width: 30vw;
+    height: 85vh;
+    backdrop-filter: blur(5px);
+    overflow: auto;
+}
+
+.background-shadow h1,
+.background-shadow p {
+    overflow: visible;
+    white-space: nowrap;
+    margin: 0;
+}
+article{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    height: 110vh;
+    text-align: center;
+    width: 100vw;
+}
+
+.Como-funciona{
+    background-color: #0F1400;
+    border-bottom: 10px solid #124523;
+    height: 30vh;
+    width: 100vw;
+    font-size: 54px;
+    color: white;
+}
+
+.Guia{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("image_5.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(0.2em);
+}
+
+.background-black-blur{
+    width: 100vw;
+    height: 100%;
+    background-color: #0000008e;
+    backdrop-filter: blur(2px);
+}
+
+footer{
+    display: flex;
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+    border-top: 10px solid #124523;
+    background-color: #0F1400;
+}

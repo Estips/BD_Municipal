@@ -1,0 +1,141 @@
+*{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-family: 'Barlow Semi Condensed';
+}
+
+header{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    color: rgb(255, 255, 255);
+    background-color: #0F1400;
+    border-bottom: 10px solid green;
+    width: 100vw;
+    height: 15vh;
+    text-decoration: none;
+}
+
+section{
+    height: 150vh;
+    width: 100vw;
+}
+
+.Agregar{
+    height: 100vh;
+    width: 100%;
+    background-image: url(image_6.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid black;
+}
+
+.Background-blur{
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    background-color: #000000b0;
+    backdrop-filter: blur(5px);
+}
+.Formulario{
+    color: #000000d2;
+    background: rgba(0, 0, 0, 0.31);
+    border-radius: 20px;
+    border: 1px solid white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 90%;
+    text-align: center;
+    filter: grayscale(0%);
+}
+
+.Formulario::-webkit-scrollbar{
+    display: none;
+}
+
+.datos{
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.datos, input{
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+input{
+    background-color: #f9f9f98d;
+}
+
+.campo{
+    font-weight: bolder;
+    color:rgba(255, 255, 255, 0.378);
+}
+
+.Editar-Eliminar{
+    background: rgb(255, 255, 255);
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    
+}
+
+table {
+    margin-top: 0;
+    border-collapse: collapse;
+    width: 90%;
+    height: 90%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+tr{
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+td, th {
+    text-align: center;
+    width: 200px;
+    margin-left: 10px;
+    
+}
+
+.Formulario table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.form-separacion{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+}
+
+.tr-dmrd, .td-dmrd{
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.eliminar {
+    background-color: #ff00003e;
+}
+
+.editar {
+    background-color: #00ff004b;
+}
+
+footer{
+    display: flex;
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+    border-top: 10px solid #124523;
+    background-color: #0F1400;
+}
